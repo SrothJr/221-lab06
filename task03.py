@@ -1,4 +1,4 @@
-import heapq
+import heapq as hq
 
 def dijkstra_min_max(graph, start, end, n):
     # Initialize distances with infinity
@@ -7,7 +7,7 @@ def dijkstra_min_max(graph, start, end, n):
     priority_queue = [(0, start)]
     
     while priority_queue:
-        current_max_danger, current_node = heapq.heappop(priority_queue)
+        current_max_danger, current_node = hq.heappop(priority_queue)
         
         if current_node == end:
             return current_max_danger
@@ -16,7 +16,7 @@ def dijkstra_min_max(graph, start, end, n):
             max_danger = max(current_max_danger, danger)
             if max_danger < distances[neighbor]:
                 distances[neighbor] = max_danger
-                heapq.heappush(priority_queue, (max_danger, neighbor))
+                hq.heappush(priority_queue, (max_danger, neighbor))
     
     return "Impossible"
 
